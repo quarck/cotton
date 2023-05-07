@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>cotton</title>
+<style>
+a {
+	text-decoration: none;
+}
+</style>
+</head>
+<body>
+
+	<div style="padding:20px" id="form">
+
+	<form action = "/convert"
+		 method = "POST"
+         enctype = "multipart/form-data">
+
+		<h3>Template to use:</h3>
+		 <select name = "t">
+				{%for t in templates%}
+					<option value="{{t[0]}}" {%if t[1]%}selected{%else%}{%endif%} >{{t[0]}}</option>
+				{%endfor%}
+			</select>
+
+			<h3>Source image:</h3>
+
+         <input type = "file" name = "file" />
+
+		<br><br>
+         <input type = "submit" value="Cottonify!"/>
+  	</form>
+
+		<br>
+	<h3>Available templates:</h3>
+	
+	{%for t in templates%}
+	<br><b>{{t[0]}}:</b>
+	<br><img src="/i/{{t[0]}}" width="10%">
+	<br>
+	{%endfor%}
+	
+	
+	</div>
+	
+</body>
+</html>
