@@ -91,7 +91,10 @@ def affine_transform(src, dst_template, viewport, viewport_aspect):
 def apply_green_mask(template, img):
     # Discard alpha channel if necessary
     if img.shape[2] == 4:
-        img = img[:, :, :3]
+        img = img.copy()[:, :, :3]
+
+    if template.shape[2] == 4:
+        template = template.copy()[:, :, :3]
 
     # This will do per-channel array to array comparison
     mask = template == np.array([0, 255, 0])
