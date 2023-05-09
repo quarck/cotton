@@ -25,19 +25,21 @@ import datetime
 import sys
 import os
 
-templates = [0, 1, 2]
+templates = [0, 1, 2, 3]
 
 template_viewports = [
     [[238, 63], [643, 349], [642, 710], [239, 387]],
-    [[238, 63], [643, 349], [642, 710], [239, 387]],
-    [[238, 63], [643, 349], [642, 710], [239, 387]],
+    [[238, 63-160], [643, 133], [642, 764], [239, 427]],
+    [[0, 0], [800-1, 0], [800-1, 600-1], [0, 600-1]],
+    [[469, -210], [1324, 271], [1320, 965], [469, 437]],
 ]
 
 # aspect ratio of the view port in the template image
 template_aspects = [
     (3, 2),
-    (3, 2),
-    (3, 2),
+    (1, 2),
+    (4, 3),
+    (16, 10),
 ]
 
 
@@ -74,7 +76,9 @@ def cottonify():
 
     if request.method == 'POST':
         f = request.files['file']
-        template_id = int(request.args.get('t', '0'))
+        template_id = int(request.form.get('t', '0'))
+
+        print (template_id)
 
         if template_id not in templates:
             return ""

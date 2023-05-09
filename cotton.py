@@ -121,14 +121,14 @@ def cottonify(src, template, viewport, viewport_aspect, noise=False):
 
 
 def main():
-    template_viewport = [[238, 63], [643, 349], [642, 710], [239, 387]]
-    template_aspect = (3, 2)  # aspect ratio of the view port in the template image
+    template_viewport = [[469, -210], [1324, 271], [1320, 965], [469, 437]]
+    template_aspect = (16, 10)  # aspect ratio of the view port in the template image
 
-    src = iio.imread(r'C:\Users\sergey\Desktop\real_photo.png').copy()
-    template = iio.imread(r'C:\Users\sergey\Desktop\template.png').copy()
+    src = iio.imread(r'test\test.jpg').copy()
+    template = iio.imread(r'c_templates\3.png').copy()
 
     img = cottonify(src, template, template_viewport, template_aspect, noise=True)
-    iio.imwrite(r'C:\Users\sergey\Desktop\res3.png', img)
+    iio.imwrite(r'test\out.png', img)
 
 
 if __name__ == "__main__":
